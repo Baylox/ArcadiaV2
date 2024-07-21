@@ -1,0 +1,47 @@
+// Ajoutez cette section dans votre fichier _responsive.scss
+
+@media (min-width: 1024px) {
+  // Augmenter la taille de la police pour les titres
+  h1 {
+    font-size: 3rem; // Ajustez la taille selon vos besoins
+  }
+  
+  h2 {
+    font-size: 2.5rem;
+  }
+  
+  h3 {
+    font-size: 2rem;
+  }
+  
+  h4 {
+    font-size: 1.75rem;
+  }
+  
+  h5 {
+    font-size: 1.5rem;
+  }
+  
+  h6 {
+    font-size: 1.25rem;
+  }
+
+  // Augmenter la taille de la police pour le corps du texte
+  body {
+    font-size: 1.3rem;
+  }
+
+  // Augmenter la taille de la police pour les boutons
+  .btn {
+    font-size: 1.1rem;
+  }
+
+  // Augmenter la taille de la police pour d'autres éléments si nécessaire
+  .avis-container .formulaire-avis {
+    font-size: 1.1rem;
+  }
+  
+  .avis-container .formulaire-avis .form-group label {
+    font-size: 1.2rem;
+  }
+}

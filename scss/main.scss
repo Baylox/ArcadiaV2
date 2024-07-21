@@ -1,0 +1,21 @@
+// Import des fichiers base
+@import 'base/variables';
+@import 'base/reset';
+@import 'base/typography';
+
+// Import de Bootstrap
+@import "../node_modules/bootstrap/scss/bootstrap";
+@import url("/node_modules/bootstrap-icons/font/bootstrap-icons.css");
+
+// Import des fichiers layout
+@import 'layout/header';
+@import 'layout/footer';
+@import 'layout/hero';
+
+// Import des fichiers pages
+@import 'pages/home';
+@import 'pages/avis';
+@import 'pages/connexion';
+
+// Import du fichier responsive en dernier pour qu'il puisse surcharger les autres styles
+@import 'responsive';

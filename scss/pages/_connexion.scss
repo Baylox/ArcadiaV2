@@ -1,0 +1,50 @@
+.form-container {
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.custom-form-group {
+  margin-bottom: 15px;
+
+  .custom-input {
+    border: 1px solid $secondary;
+    padding: 10px;
+    color: $black;
+
+    &::placeholder {
+      color: lighten($black, 30%);
+    }
+  }
+
+  .custom-label {
+    margin-top: 10px;
+    font-weight: bold;
+    color: $secondary;
+  }
+}
+
+.custom-check-label {
+  color: $secondary;
+}
+
+.custom-btn {
+  background-color: $primary;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 1.2rem;
+
+  &:hover {
+    background-color: darken($secondary, 10%);
+  }
+}
+
+.custom-link {
+  color: $secondary;
+
+  &:hover {
+    color: darken($secondary, 10%);
+  }
+}

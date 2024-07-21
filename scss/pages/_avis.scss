@@ -1,0 +1,74 @@
+// Styles pour le formulaire d'avis
+.avis-container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    background-color: $tertiary;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  
+    .avis-titre {
+      font-family: $font-family-sans-serif;
+      margin-bottom: 20px;
+      color: $dark;
+    }
+  
+    .formulaire-avis {
+      background-color: $white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  
+      .form-group {
+        margin-bottom: 15px;
+      }
+  
+      label {
+        font-family: $font-family-sans-serif;
+        color: $dark;
+      }
+  
+      .form-control {
+        border-radius: 5px;
+        border: 1px solid $secondary;
+        padding: 10px;
+        font-family: $font-family-serif;
+      }
+  
+      .btn-primary {
+        background-color: $primary;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+        font-size: 1.2rem;
+        font-family: $font-family-sans-serif;
+  
+        &:hover {
+          background-color: $secondary;
+        }
+      }
+    }
+  
+    .liste-avis {
+      .carte-avis {
+        background-color: $tertiary;
+        color: $white;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  
+        .carte-titre,
+        .carte-texte {
+          color: $white;
+        }
+  
+        .carte-corps {
+          background-color: rgba(0, 0, 0, 0.7);
+          padding: 20px;
+        }
+      }
+    }
+  }

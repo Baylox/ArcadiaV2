@@ -1,0 +1,26 @@
+  //Home
+  .text-justify{
+      text-align: justify;
+  }
+  
+  .mb-custom {
+      margin-bottom: 50px;
+    }
+    
+  
+  
+  
+// Styles spécifiques pour les cartes d'avis
+
+.card {
+  background-color: $tertiary;
+  /*color: $white; */
+  margin-bottom: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  /*
+  .card-title,
+  .card-text {
+      color: $white; // Ensure card title and text are white
+  } */
+}

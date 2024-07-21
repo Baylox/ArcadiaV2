@@ -1,0 +1,30 @@
+//Accueil hero
+
+.hero-scene {
+    position: relative;
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url(../assets/Singe.jpg);
+        background-size: cover;
+        background-position: center; 
+        filter: brightness(0.4); 
+    }
+  
+    * {
+        position: relative;
+    }
+  
+    .hero-scene-content {
+        height: 400px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+  }
+  
