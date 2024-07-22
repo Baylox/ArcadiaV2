@@ -4,7 +4,7 @@ CREATE DATABASE IF NOT EXISTS Arcadia;
 -- Utiliser la base de données
 USE Arcadia;
 
--- Créer les tables
+-- Créeation des tables
 CREATE TABLE Users(
    Id_User VARCHAR(50) PRIMARY KEY,
    Email_User VARCHAR(50) NOT NULL,
