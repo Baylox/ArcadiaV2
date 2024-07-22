@@ -17,7 +17,7 @@ CREATE TABLE Users(
 CREATE TABLE Role(
    Id_Role INT AUTO_INCREMENT PRIMARY KEY,
    Label VARCHAR(50),
-   Type_User VARCHAR(50)
+   Type_User VARCHAR(50) 
 );
 
 CREATE TABLE Alimentation_Animaux(
@@ -148,4 +148,12 @@ CREATE TABLE Planifier(
    FOREIGN KEY(Id_Service) REFERENCES Service(Id_Service),
    FOREIGN KEY(Id_Horaire) REFERENCES Horaire(Id_Horaire)
 );
+
+/**
+Insertion des données
+*/
+INSERT INTO Role (Label, Type_User) VALUES
+('Administrateur', 'Admin'),
+('Veterinaire', 'Staff'),
+('Employe', 'Staff');
 
