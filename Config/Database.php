@@ -18,7 +18,9 @@ class Database {
             die("Erreur de connexion à la base de données: " . $error->getMessage());
         }
     }
-
+        public function getConnexion() {
+            return $this->connexion;
+        }
     public function setupDatabase() {
         try {
             $sql = file_get_contents('arcadia.sql');
@@ -29,6 +31,7 @@ class Database {
         }
     }
 }
+
 
 $database = new Database();
 $database->setupDatabase();
