@@ -149,11 +149,59 @@ CREATE TABLE Planifier(
    FOREIGN KEY(Id_Horaire) REFERENCES Horaire(Id_Horaire)
 );
 
-/**
-Insertion des données
-*/
-INSERT INTO Role (Label, Type_User) VALUES
-('Administrateur', 'Admin'),
-('Veterinaire', 'Staff'),
-('Employe', 'Staff');
+-- Insertion dans la table Role
+INSERT INTO `Role` (`Label`, `Type_User`) VALUES
+('Administrateur', 'admin'),
+('Veterinaire', 'vet'),
+('Employe', 'employee'),
+('Guide', 'guide'),
+('Gardien', 'gardien');
+
+-- Insertion dans la table Alimentation_Animaux
+INSERT INTO `Alimentation_Animaux` (`Nom_Nourriture`, `Quantite_Nourriture`, `Date_Alimentation`, `Commentaire_Veterinaire`) VALUES
+('Herbe', 5.5, '2024-01-01 12:00:00', 'Bonne qualité'),
+('Viande', 3.2, '2024-01-02 14:00:00', 'Provenance vérifiée'),
+('Fruits', 2.5, '2024-01-03 10:30:00', 'Frais'),
+('Poisson', 4.0, '2024-01-04 11:00:00', 'Bien conservé'),
+('Légumes', 3.7, '2024-01-05 09:00:00', 'Bien lavé');
+
+-- Insertion dans la table Soins_Animaux
+INSERT INTO `Soins_Animaux` (`Description_Soin`, `Date_Soin`) VALUES
+('Vaccination', '2024-01-03 10:00:00'),
+('Examen de routine', '2024-01-04 11:00:00'),
+('Détartrage des dents', '2024-01-05 12:00:00'),
+('Bain médicalisé', '2024-01-06 09:00:00'),
+('Analyse sanguine', '2024-01-07 08:00:00');
+
+-- Insertion dans la table Habitat
+INSERT INTO `Habitat` (`Nom`, `Description`, `Type_Habitat`) VALUES
+('Savane', 'Habitat pour animaux de savane', 'extérieur'),
+('Aquarium', 'Habitat pour animaux aquatiques', 'intérieur'),
+('Jungle', 'Habitat pour animaux de la jungle', 'extérieur'),
+('Marais', 'Habitat pour animaux des marais', 'extérieur'),
+('Désert', 'Habitat pour animaux du désert', 'extérieur');
+
+-- Insertion dans la table Image
+INSERT INTO `Image` (`Image_Date`) VALUES
+('2024-01-05 15:00:00'),
+('2024-01-06 16:00:00'),
+('2024-01-07 17:00:00'),
+('2024-01-08 18:00:00'),
+('2024-01-09 19:00:00');
+
+-- Insertion dans la table Espece
+INSERT INTO `Espece` (`Type_Espece`, `Evaluation_Extinction`, `Traits_Caracteristiques`) VALUES
+('Lion', 'Vulnérable', 'Grand carnivore'),
+('Dauphin', 'Non menacé', 'Mammifère marin intelligent'),
+('Tigre', 'En danger', 'Félin puissant'),
+('Éléphant', 'Menacé', 'Grand herbivore'),
+('Crocodile', 'Non menacé', 'Grand reptile');
+
+-- Insertion dans la table Race
+INSERT INTO `Race` (`Label`, `Description`, `Habitat_Naturel`) VALUES
+('Lion d\'Afrique', 'Grand lion d\'Afrique', 'Savane'),
+('Dauphin à gros nez', 'Dauphin avec un nez proéminent', 'Océan'),
+('Tigre du Bengale', 'Grand tigre du Bengale', 'Jungle'),
+('Éléphant d\'Afrique', 'Grand éléphant d\'Afrique', 'Savane'),
+('Crocodile du Nil', 'Grand crocodile du Nil', 'Marais');
 
