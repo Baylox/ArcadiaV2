@@ -146,136 +146,134 @@ CREATE TABLE Planifier(
     FOREIGN KEY(Id_Horaire) REFERENCES Horaire(Id_Horaire)
 );
 
--- Insertion dans la table Role
+
+-- Injections de données
 INSERT INTO `Role` (`Label`, `Type_User`) VALUES
-('Administrateur', 'admin'),
-('Veterinaire', 'vet'),
-('Employe', 'employee'),
-('Guide', 'guide'),
-('Gardien', 'gardien');
+('Administrateur', 'Admin'),
+('Vétérinaire', 'Staff'),
+('Employé', 'Staff');
 
--- Insertion dans la table Alimentation_Animaux
+-- Insertion de données d'alimentation des animaux
 INSERT INTO `Alimentation_Animaux` (`Nom_Nourriture`, `Quantite_Nourriture`, `Date_Alimentation`, `Commentaire_Veterinaire`) VALUES
-('Herbe', 5.5, '2024-01-01 12:00:00', 'Bonne qualité'),
-('Viande', 3.2, '2024-01-02 14:00:00', 'Provenance vérifiée'),
-('Fruits', 2.5, '2024-01-03 10:30:00', 'Frais'),
-('Poisson', 4.0, '2024-01-04 11:00:00', 'Bien conservé'),
-('Légumes', 3.7, '2024-01-05 09:00:00', 'Bien lavé');
+('Viande', 50.0, '2024-01-01 10:00:00', 'Les lions ont bien mangé.'),
+('Herbe', 200.0, '2024-01-01 11:00:00', 'Les éléphants ont apprécié.'),
+('Poisson', 30.0, '2024-01-01 12:00:00', 'Les pingouins ont bien mangé.'),
+('Insectes', 10.0, '2024-01-01 13:00:00', 'Les grenouilles ont bien mangé.'),
+('Fruits', 100.0, '2024-01-01 14:00:00', 'Les singes ont bien mangé.');
 
--- Insertion dans la table Soins_Animaux
+-- Insertion de soins des animaux
 INSERT INTO `Soins_Animaux` (`Description_Soin`, `Date_Soin`) VALUES
-('Vaccination', '2024-01-03 10:00:00'),
-('Examen de routine', '2024-01-04 11:00:00'),
-('Détartrage des dents', '2024-01-05 12:00:00'),
-('Bain médicalisé', '2024-01-06 09:00:00'),
-('Analyse sanguine', '2024-01-07 08:00:00');
+('Vaccination annuelle', '2024-01-02 10:00:00'),
+('Vérification dentaire', '2024-01-03 11:00:00'),
+('Analyse sanguine', '2024-01-04 12:00:00'),
+('Traitement antiparasitaire', '2024-01-05 13:00:00'),
+('Brossage des poils', '2024-01-06 14:00:00');
 
--- Insertion dans la table Habitat
+-- Insertion des habitats
 INSERT INTO `Habitat` (`Nom`, `Description`, `Type_Habitat`) VALUES
-('Savane', 'Habitat pour animaux de savane', 'extérieur'),
-('Jungle', 'Habitat pour animaux de la jungle', 'extérieur'),
-('Marais', 'Habitat pour animaux des marais', 'extérieur');
+('Jungle', 'Un habitat dense avec une végétation luxuriante.', 'Jungle'),
+('Marais', 'Un habitat humide avec des eaux stagnantes.', 'Marais'),
+('Savane', 'Un habitat ouvert avec des herbes hautes.', 'Savane');
 
--- Insertion dans la table Image
+-- Insertion des images
 INSERT INTO `Image` (`Image_Date`) VALUES
-('2024-01-05 15:00:00'),
-('2024-01-06 16:00:00'),
-('2024-01-07 17:00:00'),
-('2024-01-08 18:00:00'),
-('2024-01-09 19:00:00');
+('2024-01-01 00:00:00'),
+('2024-01-02 00:00:00'),
+('2024-01-03 00:00:00'),
+('2024-01-04 00:00:00'),
+('2024-01-05 00:00:00');
 
--- Insertion dans la table Espece
+-- Insertion des espèces
 INSERT INTO `Espece` (`Type_Espece`, `Evaluation_Extinction`, `Traits_Caracteristiques`) VALUES
 ('Lion', 'Vulnérable', 'Grand carnivore'),
 ('Tigre', 'En danger', 'Félin puissant'),
 ('Éléphant', 'Menacé', 'Grand herbivore'),
 ('Crocodile', 'Non menacé', 'Grand reptile'),
-('Girafe', 'Non menacé', 'Grand herbivore avec un long cou');
+('Girafe', 'Non menacé', 'Grand herbivore avec un long cou'),
+('Zèbre', 'Non menacé', 'Rayures distinctes'),
+('Guépard', 'Vulnérable', 'Le plus rapide'),
+('Rhinocéros', 'Critiquement menacé', 'Grand herbivore avec une corne'),
+('Gorille', 'En danger', 'Grand primate'),
+('Léopard', 'Quasi menacé', 'Félin tacheté');
 
--- Insertion dans la table Race
+-- Insertion des races
 INSERT INTO `Race` (`Label`, `Description`, `Habitat_Naturel`) VALUES
 ('Lion d\'Afrique', 'Grand lion d\'Afrique', 'Savane'),
 ('Tigre du Bengale', 'Grand tigre du Bengale', 'Jungle'),
 ('Éléphant d\'Afrique', 'Grand éléphant d\'Afrique', 'Savane'),
 ('Crocodile du Nil', 'Grand crocodile du Nil', 'Marais'),
-('Girafe de Masaï', 'Girafe avec des taches distinctes', 'Savane');
+('Girafe de Masaï', 'Girafe avec des taches distinctes', 'Savane'),
+('Zèbre de Grévy', 'Grand zèbre avec de fines rayures', 'Savane'),
+('Guépard d\'Afrique', 'Le plus rapide des guépards', 'Savane'),
+('Rhinocéros blanc', 'Grand rhinocéros blanc', 'Savane'),
+('Gorille de montagne', 'Grand primate des montagnes', 'Montagne'),
+('Léopard d\'Afrique', 'Félin tacheté d\'Afrique', 'Savane');
 
--- Insertion dans la table Service
+-- Insertion des services
 INSERT INTO `Service` (`Nom`, `Description_Service`) VALUES
-('Visite guidée', 'Visite guidée du zoo'),
-('Atelier pour enfants', 'Atelier éducatif pour enfants'),
-('Spectacle de fauves', 'Spectacle avec des lions et des tigres'),
-('Nourrissage des animaux', 'Participation au nourrissage des animaux'),
-('Rencontre avec les soigneurs', 'Discussion avec les soigneurs du zoo');
+('Visite guidée', 'Une visite guidée par un expert du zoo.'),
+('Nourrissage des animaux', 'Participation au nourrissage des animaux.'),
+('Séance photo', 'Une séance photo avec les animaux.'),
+('Atelier pédagogique', 'Un atelier éducatif pour les enfants.'),
+('Rencontre avec le vétérinaire', 'Rencontre avec le vétérinaire du zoo.');
 
--- Insertion dans la table Horaire
+-- Insertion des horaires
 INSERT INTO `Horaire` (`Jour_Semaine`, `Heure_Debut`, `Heure_Fin`) VALUES
 ('Lundi', '09:00:00', '17:00:00'),
 ('Mardi', '09:00:00', '17:00:00'),
 ('Mercredi', '09:00:00', '17:00:00'),
 ('Jeudi', '09:00:00', '17:00:00'),
-('Vendredi', '09:00:00', '17:00:00');
+('Vendredi', '09:00:00', '17:00:00'),
+('Samedi', '10:00:00', '18:00:00'),
+('Dimanche', '10:00:00', '18:00:00');
 
--- Insertion dans la table Avis
+-- Insertion des avis
 INSERT INTO `Avis` (`Pseudo`, `Commentaire`, `Status_Avis`, `IsVisible`) VALUES
-('user1', 'Super zoo!', 'Approuvé', 1),
-('user2', 'Très intéressant!', 'Approuvé', 1),
-('user3', 'Les enfants ont adoré!', 'Approuvé', 1),
-('user4', 'Bien entretenu', 'Approuvé', 1),
-('user5', 'Personnel accueillant', 'Approuvé', 1);
+('Christian69Lyon', 'Le zoo Arcadia est incroyable! Les animaux sont bien entretenus et les habitats sont magnifiques.', 'approuvé', TRUE),
+('PierreM', 'Une expérience formidable pour toute la famille. Nous avons adoré la diversité des animaux.', 'approuvé', TRUE),
+('Patatoes', 'Les guides sont très informés et passionnés. Nous avons appris beaucoup de choses nouvelles.', 'approuvé', TRUE);
 
--- Insertion dans la table Zoo
+-- Insertion des zoos
 INSERT INTO `Zoo` (`Zoo_Address`, `Telephone_Number`, `Id_User`) VALUES
-('123 Zoo Lane', '0123456789', 'user1'),
-('456 Safari Road', '0987654321', 'user2'),
-('789 Jungle Path', '0234567891', 'user3'),
-('101 Desert Way', '0345678912', 'user4'),
-('202 Wetland Drive', '0456789123', 'user5');
+('12 Rue des Innovateurs, 35000 Rennes, France', '0699887766', '1');
 
--- Insertion dans la table Animal
+-- Insertion des animaux
 INSERT INTO `Animal` (`Prenom`, `Etat`, `Sexe`, `Description_Animal`, `Dob_Animal`, `Id_Image`, `Id_Habitat`) VALUES
-('Simba', 'Bonne santé', 'Mâle', 'Lion adulte', '2015-06-01', 1, 1),
-('Shera', 'Bonne santé', 'Femelle', 'Tigre adulte', '2016-03-11', 2, 2),
-('Dumbo', 'Bonne santé', 'Mâle', 'Éléphant jeune', '2014-07-21', 3, 1),
-('Croc', 'Bonne santé', 'Mâle', 'Crocodile adulte', '2013-11-30', 4, 3),
-('Twiga', 'Bonne santé', 'Femelle', 'Girafe adulte', '2012-04-15', 5, 1);
+('Simba', 'En bonne santé', 'Mâle', 'Lion courageux et fort', '2015-05-15', 1, 1),
+('Nala', 'En bonne santé', 'Femelle', 'Lionne agile et intelligente', '2016-08-21', 2, 1),
+('Kaa', 'En bonne santé', 'Mâle', 'Serpent constricteur', '2018-01-30', 3, 2),
+('Baloo', 'En bonne santé', 'Mâle', 'Ours aimant le miel', '2012-11-03', 4, 2),
+('Dumbo', 'En bonne santé', 'Mâle', 'Éléphant aux grandes oreilles', '2019-03-27', 5, 3);
 
--- Insertion dans la table Rapport
+-- Insertion des rapports
 INSERT INTO `Rapport` (`Date_Rapport`, `Details`, `Type`, `Id_User`, `Id_Animal`, `Id_Traitement`, `Id_Alimentation`) VALUES
-('2024-01-07', 'Vaccination annuelle', 'Santé', 'user1', 1, 1, 1),
-('2024-01-08', 'Examen de routine', 'Santé', 'user2', 2, 2, 2),
-('2024-01-09', 'Détartrage des dents', 'Santé', 'user3', 3, 3, 3),
-('2024-01-10', 'Bain médicalisé', 'Santé', 'user4', 4, 4, 4),
-('2024-01-11', 'Analyse sanguine', 'Santé', 'user5', 5, 5, 5);
+('2024-01-10', 'Le lion Simba a reçu sa vaccination annuelle.', 'Soin', '1', '1', '1', '1'),
+('2024-01-11', 'L\'éléphant Dumbo a mangé 50kg de fruits.', 'Alimentation', '1', '5', '2', '5');
 
--- Insertion dans la table Posseder
+-- Insertion des possessions
 INSERT INTO `Posseder` (`Id_User`, `Id_Role`) VALUES
-('user1', 1),
-('user2', 2),
-('user3', 3),
-('user4', 4),
-('user5', 5);
+('1', '1'),
+('2', '2'),
+('3', '3');
 
--- Insertion dans la table Appartenir
+-- Insertion des appartenances
 INSERT INTO `Appartenir` (`Id_Animal`, `Id_Espece`) VALUES
-(1, 1),
-(2, 2),
-(3, 3),
-(4, 4),
-(5, 5);
+('1', '1'),
+('2', '1'),
+('3', '2'),
+('4', '2'),
+('5', '3');
 
--- Insertion dans la table Decliner
+-- Insertion des déclinaisons
 INSERT INTO `Decliner` (`Id_Espece`, `Id_Race`) VALUES
-(1, 1),
-(2, 2),
-(3, 3),
-(4, 4),
-(5, 5);
+('1', '1'),
+('2', '2'),
+('3', '3');
 
--- Insertion dans la table Planifier
+-- Insertion des planifications
 INSERT INTO `Planifier` (`Id_Service`, `Id_Horaire`) VALUES
-(1, 1),
-(2, 2),
-(3, 3),
-(4, 4),
-(5, 5);
+('1', '1'),
+('2', '2'),
+('3', '3'),
+('4', '4'),
+('5', '5');
