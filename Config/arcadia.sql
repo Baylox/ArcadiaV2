@@ -295,3 +295,5 @@ ALTER TABLE `Decliner` ADD CONSTRAINT fk_id_espece_decliner FOREIGN KEY (Id_Espe
 ALTER TABLE `Decliner` ADD CONSTRAINT fk_id_race_decliner FOREIGN KEY (Id_Race) REFERENCES `Race`(Id_Race);
 ALTER TABLE `Planifier` ADD CONSTRAINT fk_id_service_planifier FOREIGN KEY (Id_Service) REFERENCES `Service`(Id_Service);
 ALTER TABLE `Planifier` ADD CONSTRAINT fk_id_horaire_planifier FOREIGN KEY (Id_Horaire) REFERENCES `Horaire`(Id_Horaire);
+
+
