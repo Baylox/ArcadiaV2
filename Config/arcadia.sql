@@ -1,9 +1,10 @@
-CREATE DATABASE IF NOT EXISTS Arcadia;
+CREATE DATABASE IF NOT EXISTS Arcadia
+    DEFAULT CHARACTER SET = 'utf8mb4';
 
 USE Arcadia;
 
 CREATE TABLE Users(
-    Id_User VARCHAR(50) PRIMARY KEY,
+    Id_User INT AUTO_INCREMENT PRIMARY KEY,
     Email_User VARCHAR(50) NOT NULL,
     Password_User VARCHAR(50) NOT NULL,
     Name_User VARCHAR(50) NOT NULL,
@@ -35,12 +36,12 @@ CREATE TABLE Habitat(
     Id_Habitat INT AUTO_INCREMENT PRIMARY KEY,
     Nom VARCHAR(50) NOT NULL,
     Description TEXT,
-    Type_Habitat VARCHAR(6) NOT NULL
+    Type_Habitat VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE Image(
     Id_Image INT AUTO_INCREMENT PRIMARY KEY,
-    Image_Date DATETIME NOT NULL
+    Image_Data BLOB NOT NULL
 );
 
 CREATE TABLE Espece(
@@ -75,14 +76,16 @@ CREATE TABLE Avis(
     Pseudo VARCHAR(50),
     Commentaire TEXT,
     Status_Avis VARCHAR(50) NOT NULL,
-    IsVisible BOOLEAN NOT NULL
+    IsVisible BOOLEAN NOT NULL,
+    Id_User INT,
+    FOREIGN KEY(Id_User) REFERENCES Users(Id_User)
 );
 
 CREATE TABLE Zoo(
     Id_Zoo INT AUTO_INCREMENT PRIMARY KEY,
     Zoo_Address VARCHAR(50) NOT NULL,
     Telephone_Number VARCHAR(15) NOT NULL,
-    Id_User VARCHAR(50) NOT NULL,
+    Id_User INT NOT NULL,
     FOREIGN KEY(Id_User) REFERENCES Users(Id_User)
 );
 
@@ -104,7 +107,7 @@ CREATE TABLE Rapport(
     Date_Rapport DATE NOT NULL,
     Details TEXT,
     Type VARCHAR(12),
-    Id_User VARCHAR(50) NOT NULL,
+    Id_User INT NOT NULL,
     Id_Animal INT NOT NULL,
     Id_Traitement INT NOT NULL,
     Id_Alimentation INT NOT NULL,
@@ -115,7 +118,7 @@ CREATE TABLE Rapport(
 );
 
 CREATE TABLE Posseder(
-    Id_User VARCHAR(50),
+    Id_User INT,
     Id_Role INT,
     PRIMARY KEY(Id_User, Id_Role),
     FOREIGN KEY(Id_User) REFERENCES Users(Id_User),
@@ -146,7 +149,6 @@ CREATE TABLE Planifier(
     FOREIGN KEY(Id_Horaire) REFERENCES Horaire(Id_Horaire)
 );
 
-
 -- Injections de données
 INSERT INTO `Role` (`Label`, `Type_User`) VALUES
 ('Administrateur', 'Admin'),
@@ -176,12 +178,12 @@ INSERT INTO `Habitat` (`Nom`, `Description`, `Type_Habitat`) VALUES
 ('Savane', 'Un habitat ouvert avec des herbes hautes.', 'Savane');
 
 -- Insertion des images
-INSERT INTO `Image` (`Image_Date`) VALUES
-('2024-01-01 00:00:00'),
-('2024-01-02 00:00:00'),
-('2024-01-03 00:00:00'),
-('2024-01-04 00:00:00'),
-('2024-01-05 00:00:00');
+INSERT INTO `Image` (`Image_Data`) VALUES
+('...'),  -- Assuming binary data for the image
+('...'),
+('...'),
+('...'),
+('...');
 
 -- Insertion des espèces
 INSERT INTO `Espece` (`Type_Espece`, `Evaluation_Extinction`, `Traits_Caracteristiques`) VALUES
@@ -228,14 +230,14 @@ INSERT INTO `Horaire` (`Jour_Semaine`, `Heure_Debut`, `Heure_Fin`) VALUES
 ('Dimanche', '10:00:00', '18:00:00');
 
 -- Insertion des avis
-INSERT INTO `Avis` (`Pseudo`, `Commentaire`, `Status_Avis`, `IsVisible`) VALUES
-('Christian69Lyon', 'Le zoo Arcadia est incroyable! Les animaux sont bien entretenus et les habitats sont magnifiques.', 'approuvé', TRUE),
-('PierreM', 'Une expérience formidable pour toute la famille. Nous avons adoré la diversité des animaux.', 'approuvé', TRUE),
-('Patatoes', 'Les guides sont très informés et passionnés. Nous avons appris beaucoup de choses nouvelles.', 'approuvé', TRUE);
+INSERT INTO `Avis` (`Pseudo`, `Commentaire`, `Status_Avis`, `IsVisible`, `Id_User`) VALUES
+('Christian69Lyon', 'Le zoo Arcadia est incroyable! Les animaux sont bien entretenus et les habitats sont magnifiques.', 'approuvé', TRUE, 1),
+('PierreM', 'Une expérience formidable pour toute la famille. Nous avons adoré la diversité des animaux.', 'approuvé', TRUE, 2),
+('Patatoes', 'Les guides sont très informés et passionnés. Nous avons appris beaucoup de choses nouvelles.', 'approuvé', TRUE, 3);
 
 -- Insertion des zoos
 INSERT INTO `Zoo` (`Zoo_Address`, `Telephone_Number`, `Id_User`) VALUES
-('12 Rue des Innovateurs, 35000 Rennes, France', '0699887766', '1');
+('12 Rue des Innovateurs, 35000 Rennes, France', '0699887766', 1);
 
 -- Insertion des animaux
 INSERT INTO `Animal` (`Prenom`, `Etat`, `Sexe`, `Description_Animal`, `Dob_Animal`, `Id_Image`, `Id_Habitat`) VALUES
@@ -247,36 +249,36 @@ INSERT INTO `Animal` (`Prenom`, `Etat`, `Sexe`, `Description_Animal`, `Dob_Anima
 
 -- Insertion des rapports
 INSERT INTO `Rapport` (`Date_Rapport`, `Details`, `Type`, `Id_User`, `Id_Animal`, `Id_Traitement`, `Id_Alimentation`) VALUES
-('2024-01-10', 'Le lion Simba a reçu sa vaccination annuelle.', 'Soin', '1', '1', '1', '1'),
-('2024-01-11', 'L\'éléphant Dumbo a mangé 50kg de fruits.', 'Alimentation', '1', '5', '2', '5');
+('2024-01-10', 'Le lion Simba a reçu sa vaccination annuelle.', 'Soin', 1, 1, 1, 1),
+('2024-01-11', 'L\'éléphant Dumbo a mangé 50kg de fruits.', 'Alimentation', 1, 5, 2, 5);
 
 -- Insertion des possessions
 INSERT INTO `Posseder` (`Id_User`, `Id_Role`) VALUES
-('1', '1'),
-('2', '2'),
-('3', '3');
+(1, 1),
+(2, 2),
+(3, 3);
 
 -- Insertion des appartenances
 INSERT INTO `Appartenir` (`Id_Animal`, `Id_Espece`) VALUES
-('1', '1'),
-('2', '1'),
-('3', '2'),
-('4', '2'),
-('5', '3');
+(1, 1),
+(2, 1),
+(3, 2),
+(4, 2),
+(5, 3);
 
 -- Insertion des déclinaisons
 INSERT INTO `Decliner` (`Id_Espece`, `Id_Race`) VALUES
-('1', '1'),
-('2', '2'),
-('3', '3');
+(1, 1),
+(2, 2),
+(3, 3);
 
 -- Insertion des planifications
 INSERT INTO `Planifier` (`Id_Service`, `Id_Horaire`) VALUES
-('1', '1'),
-('2', '2'),
-('3', '3'),
-('4', '4'),
-('5', '5');
+(1, 1),
+(2, 2),
+(3, 3),
+(4, 4),
+(5, 5);
 
 -- Contraintes
 ALTER TABLE `Avis` ADD CONSTRAINT fk_id_user_avis FOREIGN KEY (Id_User) REFERENCES `Users`(Id_User);
