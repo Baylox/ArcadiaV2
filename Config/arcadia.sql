@@ -280,22 +280,21 @@ INSERT INTO `Planifier` (`Id_Service`, `Id_Horaire`) VALUES
 (4, 4),
 (5, 5);
 
--- Contraintes
-ALTER TABLE `Avis` ADD CONSTRAINT fk_id_user_avis FOREIGN KEY (Id_User) REFERENCES `Users`(Id_User);
-ALTER TABLE `Zoo` ADD CONSTRAINT fk_id_user_zoo FOREIGN KEY (Id_User) REFERENCES `Users`(Id_User);
-ALTER TABLE `Animal` ADD CONSTRAINT fk_id_image_animal FOREIGN KEY (Id_Image) REFERENCES `Image`(Id_Image);
-ALTER TABLE `Animal` ADD CONSTRAINT fk_id_habitat_animal FOREIGN KEY (Id_Habitat) REFERENCES `Habitat`(Id_Habitat);
-ALTER TABLE `Rapport` ADD CONSTRAINT fk_id_user_rapport FOREIGN KEY (Id_User) REFERENCES `Users`(Id_User);
-ALTER TABLE `Rapport` ADD CONSTRAINT fk_id_animal_rapport FOREIGN KEY (Id_Animal) REFERENCES `Animal`(Id_Animal);
-ALTER TABLE `Rapport` ADD CONSTRAINT fk_id_traitement_rapport FOREIGN KEY (Id_Traitement) REFERENCES `Soins_Animaux`(Id_Traitement);
-ALTER TABLE `Rapport` ADD CONSTRAINT fk_id_alimentation_rapport FOREIGN KEY (Id_Alimentation) REFERENCES `Alimentation_Animaux`(Id_Alimentation);
-ALTER TABLE `Posseder` ADD CONSTRAINT fk_id_user_posseder FOREIGN KEY (Id_User) REFERENCES `Users`(Id_User);
-ALTER TABLE `Posseder` ADD CONSTRAINT fk_id_role_posseder FOREIGN KEY (Id_Role) REFERENCES `Role`(Id_Role);
-ALTER TABLE `Appartenir` ADD CONSTRAINT fk_id_animal_appartenir FOREIGN KEY (Id_Animal) REFERENCES `Animal`(Id_Animal);
-ALTER TABLE `Appartenir` ADD CONSTRAINT fk_id_espece_appartenir FOREIGN KEY (Id_Espece) REFERENCES `Espece`(Id_Espece);
-ALTER TABLE `Decliner` ADD CONSTRAINT fk_id_espece_decliner FOREIGN KEY (Id_Espece) REFERENCES `Espece`(Id_Espece);
-ALTER TABLE `Decliner` ADD CONSTRAINT fk_id_race_decliner FOREIGN KEY (Id_Race) REFERENCES `Race`(Id_Race);
-ALTER TABLE `Planifier` ADD CONSTRAINT fk_id_service_planifier FOREIGN KEY (Id_Service) REFERENCES `Service`(Id_Service);
-ALTER TABLE `Planifier` ADD CONSTRAINT fk_id_horaire_planifier FOREIGN KEY (Id_Horaire) REFERENCES `Horaire`(Id_Horaire);
-
+-- Contraintes supplémentaires
+ALTER TABLE Avis ADD CONSTRAINT fk_id_user_avis FOREIGN KEY (Id_User) REFERENCES Users(Id_User);
+ALTER TABLE Zoo ADD CONSTRAINT fk_id_user_zoo FOREIGN KEY (Id_User) REFERENCES Users(Id_User);
+ALTER TABLE Animal ADD CONSTRAINT fk_id_image_animal FOREIGN KEY (Id_Image) REFERENCES Image(Id_Image);
+ALTER TABLE Animal ADD CONSTRAINT fk_id_habitat_animal FOREIGN KEY (Id_Habitat) REFERENCES Habitat(Id_Habitat);
+ALTER TABLE Rapport ADD CONSTRAINT fk_id_user_rapport FOREIGN KEY (Id_User) REFERENCES Users(Id_User);
+ALTER TABLE Rapport ADD CONSTRAINT fk_id_animal_rapport FOREIGN KEY (Id_Animal) REFERENCES Animal(Id_Animal);
+ALTER TABLE Rapport ADD CONSTRAINT fk_id_traitement_rapport FOREIGN KEY (Id_Traitement) REFERENCES Soins_Animaux(Id_Traitement);
+ALTER TABLE Rapport ADD CONSTRAINT fk_id_alimentation_rapport FOREIGN KEY (Id_Alimentation) REFERENCES Alimentation_Animaux(Id_Alimentation);
+ALTER TABLE Posseder ADD CONSTRAINT fk_id_user_posseder FOREIGN KEY (Id_User) REFERENCES Users(Id_User);
+ALTER TABLE Posseder ADD CONSTRAINT fk_id_role_posseder FOREIGN KEY (Id_Role) REFERENCES Role(Id_Role);
+ALTER TABLE Appartenir ADD CONSTRAINT fk_id_animal_appartenir FOREIGN KEY (Id_Animal) REFERENCES Animal(Id_Animal);
+ALTER TABLE Appartenir ADD CONSTRAINT fk_id_espece_appartenir FOREIGN KEY (Id_Espece) REFERENCES Espece(Id_Espece);
+ALTER TABLE Decliner ADD CONSTRAINT fk_id_espece_decliner FOREIGN KEY (Id_Espece) REFERENCES Espece(Id_Espece);
+ALTER TABLE Decliner ADD CONSTRAINT fk_id_race_decliner FOREIGN KEY (Id_Race) REFERENCES Race(Id_Race);
+ALTER TABLE Planifier ADD CONSTRAINT fk_id_service_planifier FOREIGN KEY (Id_Service) REFERENCES Service(Id_Service);
+ALTER TABLE Planifier ADD CONSTRAINT fk_id_horaire_planifier FOREIGN KEY (Id_Horaire) REFERENCES Horaire(Id_Horaire);
 
