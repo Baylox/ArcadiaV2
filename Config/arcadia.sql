@@ -1,63 +1,74 @@
-CREATE DATABASE zoo_db;
+-- Création des tables
 
-USE zoo_db;
-
--- Table des utilisateurs
 CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    email VARCHAR(255) NOT NULL UNIQUE,
+    email VARCHAR(255) UNIQUE NOT NULL,
     password VARCHAR(255) NOT NULL,
-    role ENUM('admin', 'employee', 'vet') NOT NULL
+    role ENUM('admin', 'employee', 'veterinarian') NOT NULL
 );
 
--- Table des habitats
 CREATE TABLE habitats (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    description TEXT
+    name VARCHAR(100) NOT NULL,
+    description TEXT,
+    image_url VARCHAR(255)
 );
 
--- Table des animaux
 CREATE TABLE animals (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    species VARCHAR(255) NOT NULL,
+    name VARCHAR(100) NOT NULL,
+    species VARCHAR(100) NOT NULL,
+    image_url VARCHAR(255),
     habitat_id INT,
-    FOREIGN KEY (habitat_id) REFERENCES habitats(id) ON DELETE SET NULL
+    FOREIGN KEY (habitat_id) REFERENCES habitats(id)
 );
 
--- Table des comptes rendus des vétérinaires
-CREATE TABLE vet_reports (
+CREATE TABLE veterinary_reports (
     id INT AUTO_INCREMENT PRIMARY KEY,
     animal_id INT,
-    vet_id INT,
-    status TEXT NOT NULL,
-    food_type VARCHAR(255),
-    food_quantity DECIMAL(5, 2),
+    status VARCHAR(50) NOT NULL,
+    food_type VARCHAR(100) NOT NULL,
+    food_quantity INT NOT NULL,
     visit_date DATE NOT NULL,
-    FOREIGN KEY (animal_id) REFERENCES animals(id) ON DELETE CASCADE,
-    FOREIGN KEY (vet_id) REFERENCES users(id) ON DELETE CASCADE
+    details TEXT,
+    FOREIGN KEY (animal_id) REFERENCES animals(id)
 );
 
--- Table des services
 CREATE TABLE services (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
+    name VARCHAR(100) NOT NULL,
     description TEXT
 );
 
--- Table des avis
 CREATE TABLE reviews (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    pseudo VARCHAR(255),
-    review TEXT,
+    pseudo VARCHAR(100) NOT NULL,
+    content TEXT NOT NULL,
     is_approved BOOLEAN DEFAULT FALSE
 );
 
--- Table des statistiques de visites
-CREATE TABLE visits (
+CREATE TABLE feeding_records (
     id INT AUTO_INCREMENT PRIMARY KEY,
     animal_id INT,
-    visit_count INT DEFAULT 1,
-    FOREIGN KEY (animal_id) REFERENCES animals(id) ON DELETE CASCADE
+    food_type VARCHAR(100) NOT NULL,
+    quantity INT NOT NULL,
+    feeding_date DATETIME NOT NULL,
+    FOREIGN KEY (animal_id) REFERENCES animals(id)
 );
+
+CREATE TABLE contact_requests (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    description TEXT NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Ajout de l'index pour optimiser les requêtes sur le statut des avis
+CREATE INDEX idx_review_approval ON reviews(is_approved);
+
+-- Ajout de l'index pour optimiser les requêtes sur les dates de visite vétérinaire
+CREATE INDEX idx_vet_visit_date ON veterinary_reports(visit_date);
+
+-- Ajout de l'index pour optimiser les requêtes sur les dates d'alimentation
+CREATE INDEX idx_feeding_date ON feeding_records(feeding_date);
